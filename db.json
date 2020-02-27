@@ -1,5 +1,15 @@
 {
-  "test": [
-
+  "users": [
+    {
+      "id": 1,
+      "nom": "USER 1",
+      "prenom": "USER 1",
+      "email": "user1@gmail.com",
+      "mobile": "0000000000",
+      "ville": "city 1",
+      "statut": "Dep1",
+      "photo": "2020-01-16T23:00:00.000Z",
+      "adresse": "true"
+    }
   ]
 }
