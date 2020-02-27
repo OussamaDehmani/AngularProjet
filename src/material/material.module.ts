@@ -22,6 +22,7 @@ import * as Material from '@angular/material';
       Material.MatPaginatorModule,
       Material.MatIconModule,
       Material.MatSnackBarModule,
+
     ],
    exports: [
     Material.MatToolbarModule,

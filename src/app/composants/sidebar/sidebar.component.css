@@ -1,13 +1,4 @@
-.example-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    
-    background: black;
-
-  }
-  @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
 
 body {
   overflow-x: hidden;

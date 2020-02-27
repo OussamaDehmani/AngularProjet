@@ -9,12 +9,14 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { AdduserComponent } from './composants/adduser/adduser.component';
 import { NavbarComponent } from './composants/navbar/navbar.component';
 
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdduserComponent,
-    NavbarComponent
+    NavbarComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,8 @@ import { NavbarComponent } from './composants/navbar/navbar.component';
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
