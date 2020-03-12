@@ -1,9 +1,12 @@
 export interface Users {
+    id?:number;
     nom: string ;
     prenom: string;
-    statut: string;
-    photo: string;
-    Tel: string;
+    tel: string;
     email: string;
-    adresse:string
+    adresse:string;
+    ville:string;
+    permission:boolean;
+    pass:string;
+
 }

@@ -6,10 +6,28 @@ import {MatSidenavModule} from '@angular/material/sidenav';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
+user=true;
+fournisseur=false;
+produit=false;
   constructor() { }
 
   ngOnInit() {
   }
+cruduser(){
+this.user=true;
+this.fournisseur=false;
+this.produit=false;
+}
 
+crudproduit(){
+  this.user=false;
+  this.fournisseur=false;
+  this.produit=true;
+  }
+
+  crudfournisseurs(){
+    this.user=false;
+    this.fournisseur=true;
+    this.produit=false;
+    }
 }

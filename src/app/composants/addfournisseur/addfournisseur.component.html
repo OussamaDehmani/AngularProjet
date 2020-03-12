@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+<div class="container">
+	<form [hidden]="formvisible" [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+			
+				<div class="col-lg-3">
+						<div class="row">
+								<div class="col-4"></div>
+		
+		
+		
+								<div class="col-4">
+									<img src="../../../assets/userimg.jpg" class="img-thumbnail" alt="Cinque Terre">
+								</div>
+								<div class="col-4"></div>
+						</div>
+						
+		  
+				</div>
+				
+		
+				<div class="col-lg-4">
+			 
+						<div class="form-group">
+								<label for="exampleInputEmail1">Nom :</label>
+								<input type="text" class="form-control" formControlName="nom" placeholder="nom" >
+						</div>
+				 
+						<div class="form-group">
+								<label for="exampleInputEmail1">ville :</label>
+								<input type="text" class="form-control" formControlName="ville" placeholder="ville" >
+						</div>
+					
+				 
+						<div class="form-group">
+								<label for="exampleInputEmail1">Adresse :</label>
+								<input type="text" class="form-control" placeholder="Adresse" formControlName="Adresse">
+						</div>
+				 
+						<div class="form-group">
+								<label for="exampleInputEmail1">tele mobile :</label>
+								<input type="email" class="form-control" placeholder="tel_mobile" formControlName="tel_mobile">
+		 
+							
+		
+					</div>
+					
+				</div>
+		
+				<div class="col-lg-5">
+					
+                              <div class="form-group">
+                                    <label for="exampleInputEmail1">tele fix :</label>
+                                    <input type="text" class="form-control" placeholder="tele fix" formControlName="tel_fix" >
+                        </div>
+                     
+					
+						<div class="form-group">
+								<label for="exampleInputEmail1">Fax :</label>
+								<input type="text" class="form-control" placeholder="fax" formControlName="fax" >
+						</div>
+					   
+						<div class="form-group">
+								<label for="exampleInputEmail1" >Email :</label>
+								<input type="text" class="form-control" placeholder="email" formControlName="email_f">
+						</div>
+					  <br>
+						<div class="row">
+							<div  class="col sm-12">
+									<button *ngIf="addfourni" type="button" class="btn btn-success btn-lg btn-block" (click)="ajouter()">New</button>
+									
+							</div>
+							<div  class="col sm-12">
+									<button *ngIf="!addfourni" type="button" class="btn btn-warning btn-lg btn-block" (click)="editer()">Update</button>
+									
+							</div>
+				
+						</div>
+					   
+				</div>
+			</form>
+            </div>
+          <!--l'affichage********************************************************************-->
+    <div class="container">
+      <div class="table-wrapper">
+                <div class="row">
+                      <div class="col col-lg-9">
+
+                      </div>
+                      <div class="col col-lg-3">
+                                  <a href="#" class="btn btn-success btn-lg btn-block" data-toggle="modal" (click)="visiblerform()"><i class="material-icons">&#xE147;</i> <span>Add New Fournisseur</span></a>
+                      </div>
+                </div>
+                <div class="row">
+                
+                            <div class="mat-elevation-z8 col col-lg-12">
+                                        <table mat-table [dataSource]="fournisseurs">
+                                    
+                                          <!-- 1 Column -->
+                                          <ng-container matColumnDef="nom">
+                                              <th mat-header-cell *matHeaderCellDef>Nom </th>
+                                              <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+                                          </ng-container>
+                                    
+                                          <!-- 2 Column -->
+                                          <ng-container matColumnDef="email_f">
+                                              <th mat-header-cell *matHeaderCellDef> email_f </th>
+                                              <td mat-cell *matCellDef="let element"> {{element.email_f}} </td>
+                                          </ng-container>
+                                    
+                                          <!-- 3 Column -->
+                                          <ng-container matColumnDef="adresse">
+                                              <th mat-header-cell *matHeaderCellDef> adresse </th>
+                                              <td mat-cell *matCellDef="let element"> {{element.Adresse}} </td>
+                                          </ng-container>
+                                    
+                                          <!-- 4 Column -->
+                                          <ng-container matColumnDef="tel_mobile">
+                                              <th mat-header-cell *matHeaderCellDef> tel_mobile </th>
+                                              <td mat-cell *matCellDef="let element"> {{element.tel_mobile}} </td>
+                                          </ng-container>
+                                          <!-- 5 Permission -->
+                                          <ng-container matColumnDef="tel_fix">
+                                              <th mat-header-cell *matHeaderCellDef> tel_fix </th>
+                                              <td mat-cell *matCellDef="let element"> {{element.tel_fix}} </td>
+                                          </ng-container>
+                                          <!-- 5 Permission -->
+                                          <ng-container matColumnDef="fax">
+                                              <th mat-header-cell *matHeaderCellDef> Fax </th>
+                                              <td mat-cell *matCellDef="let element"> {{element.fax}} </td>
+                                          </ng-container>
+                                          <!-- 5 Permission -->
+                                          <ng-container matColumnDef="action">
+                                              <th mat-header-cell *matHeaderCellDef> Action </th>
+                                              <td mat-cell *matCellDef="let row">      
+                                                     <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit" (click)="onEdit(row)">&#xE254;</i></a>
+                                                    <a href="#" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete" (click)="delefournisseur(row)">&#xE872;</i></a>
+                                           </td>
+                                          </ng-container>
+
+                                        
+                                    
+                                          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                        </table>
+                                    
+                                        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                                    </div>
+                                    
+
+
+                      
+          </div>
+          
+      </div>
+  </div>  
+</body>
+</html>  

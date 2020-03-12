@@ -1,53 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-<form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
-    <mat-grid-list cols="2" rowHeight="300px">
-        <mat-grid-tile>
-            <div class="controles-container">
-                <input type="hidden" formControlName="id">
-                <div>
-                    
-                    <input  matInput placeholder="nom">
-                    
-                </div>
-                <div>
-                    <input  matInput placeholder="prenom">
-                   
-                </div>
-                <div>
-                    <input  matInput placeholder="Email">
-                   
-                </div>
-                <div>
-                    <input  matInput placeholder="Mobile*">
-                
+</head>
+<body>
+	<!--formulaire d'ajout*************************************************************-->
+	<div class="container">
+	<form [hidden]="formvisible" [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+			
+				<div class="col-lg-3">
+						<div class="row">
+								<div class="col-4"></div>
+		
+		
+		
+								<div class="col-4">
+									<img src="../../../assets/userimg.jpg" class="img-thumbnail" alt="Cinque Terre">
+								</div>
+								<div class="col-4"></div>
+						</div>
+						
+		  
+				</div>
+				
+		
+				<div class="col-lg-4">
+			 
+						<div class="form-group">
+								<label for="exampleInputEmail1">Nom :</label>
+								<input type="text" class="form-control" formControlName="nom" placeholder="nom" >
+						</div>
+				 
+						<div class="form-group">
+								<label for="exampleInputEmail1">Prenom :</label>
+								<input type="text" class="form-control" formControlName="prenom" placeholder="prenom" >
+						</div>
+					
+				 
+						<div class="form-group">
+								<label for="exampleInputEmail1">Telephone :</label>
+								<input type="text" class="form-control" placeholder="telephone" formControlName="tel">
+						</div>
+				 
+						<div class="form-group">
+								<label for="exampleInputEmail1">mail :</label>
+								<input type="email" class="form-control" placeholder="mail" formControlName="email">
+		 
+							<div class="radio">
+									<label><input type="checkbox" name="permission" formControlName="permission" value="1">modifier</label>
+								  
+							</div>
+		
+					</div>
+					
+				</div>
+		
+				<div class="col-lg-5">
+					
+					<div class="form-group">
+						<label for="exampleInputEmail1">adresse :</label>
+						<input type="text" class="form-control" placeholder="adresse" formControlName="adresse" >
+				</div>
 
-                </div>
-                <div>
-                    <input  matInput placeholder="ville">
-                </div>
-            </div>
-        </mat-grid-tile>
-        <mat-grid-tile>
-          
-            
-                <div>
-                    <mat-select  placeholder="statut">
-                        <mat-option>None</mat-option>
-                        <ng-container *ngFor="let st of statuts">
-                            <mat-option value="{{st.id}}">{{st.value}}</mat-option>
-                        </ng-container>
-                    </mat-select>
-                </div>
-                <div>
-                    <input   placeholder="adresse">
-                </div>
-              
-                <div class="button-row">
-                    <button mat-raised-button color="primary" type="submit">Submit</button>
-                    <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
-                </div>
-           
-        </mat-grid-tile>
-    </mat-grid-list>
-</form>
+					<div class="form-group">
+						<label for="exampleInputEmail1">password :</label>
+						<input type="password" class="form-control" placeholder="password" formControlName="pass" >
+				</div>
+					
+						
+					   
+						<div class="form-group">
+								<label for="exampleInputEmail1" >ville :</label>
+								<input type="text" class="form-control" placeholder="ville" formControlName="ville">
+						</div>
+					  
+						<div class="row">
+							<div *ngIf="adduser" class="col sm-6">
+									<button type="button" class="btn btn-success btn-lg btn-block" (click)="ajouter()">New</button>
+									
+							</div>
+							<div *ngIf="!adduser" class="col sm-6">
+									<button type="button" class="btn btn-warning btn-lg btn-block" (click)="editer()">Update</button>
+									
+							</div>
+				
+						</div>
+					   
+				</div>
+			</form>
+		</div>	
+	<!--l'affichage********************************************************************-->
+    <div class="container">
+        <div class="table-wrapper">
+			<div class="row">
+				<div class="col col-lg-9">
+
+				</div>
+				<div class="col col-lg-3">
+						<a href="#" class="btn btn-success btn-lg btn-block" data-toggle="modal" (click)="visiblerform()"><i class="material-icons">&#xE147;</i> <span>Add New Client</span></a>
+				</div>
+			</div>
+			<div class="row">
+			
+					<div class="mat-elevation-z8 col col-lg-12">
+							<table mat-table [dataSource]="users">
+						  
+							  <!-- 1 Column -->
+							  <ng-container matColumnDef="Nom_Prenom">
+								<th mat-header-cell *matHeaderCellDef> Nom & prenom </th>
+								<td mat-cell *matCellDef="let element"> {{element.nom}} {{element.prenom}} </td>
+							  </ng-container>
+						  
+							  <!-- 2 Column -->
+							  <ng-container matColumnDef="email">
+								<th mat-header-cell *matHeaderCellDef> email </th>
+								<td mat-cell *matCellDef="let element"> {{element.email}} </td>
+							  </ng-container>
+						  
+							  <!-- 3 Column -->
+							  <ng-container matColumnDef="Telephone">
+								<th mat-header-cell *matHeaderCellDef> Telephone </th>
+								<td mat-cell *matCellDef="let element"> {{element.tel}} </td>
+							  </ng-container>
+						  
+							  <!-- 4 Column -->
+							  <ng-container matColumnDef="Adresse">
+								<th mat-header-cell *matHeaderCellDef> Adresse </th>
+								<td mat-cell *matCellDef="let element"> {{element.adresse}} </td>
+							  </ng-container>
+							
+							  <!-- 5 Permission -->
+							  <ng-container matColumnDef="Action">
+								<th mat-header-cell *matHeaderCellDef> Action </th>
+								<td mat-cell *matCellDef="let row">      
+									 <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit" (click)="onEdit(row)">&#xE254;</i></a>
+									<a href="#" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete" (click)="deleteuser(row)">&#xE872;</i></a>
+							   </td>
+							  </ng-container>
+
+							
+						  
+							  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+							  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+							</table>
+						  
+							<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+						  </div>
+						  
+
+
+				
+		</div>
+		
+        </div>
+    </div>
+
+</body>
+</html>                                		                            
+
+

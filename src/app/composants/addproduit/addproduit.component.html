@@ -1,0 +1,156 @@
+<html>
+<div class="container">
+                
+<form [hidden]="formvisible" [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+    <div class="container">
+        <div class="col-lg-3">
+                <div class="row">
+                        <div class="col-4"></div>
+
+
+
+                        <div class="col-4">
+                            <img src="../../../assets/userimg.jpg" class="img-thumbnail" alt="Cinque Terre">
+                           
+                        </div>
+                        <input style="background-color:gray;" type="file" class="form-control" formControlName="image" (change)="onFileChanged()" >
+                        
+                        <div class="col-4"></div>
+                </div>
+                
+  
+        </div>
+        
+
+        <div class="col-lg-4">
+            <!-- input nom-->
+                <div class="form-group">
+                        <label for="exampleInputEmail1">Nom :</label>
+                        <input type="text" class="form-control" formControlName="nom" placeholder="nom" >
+                </div>
+            <!-- input prenom-->
+                <div class="form-group">
+                        <label for="exampleInputEmail1">Prix de base :</label>
+                        <input type="text" class="form-control" formControlName="prix_base" placeholder="prix de base " >
+                </div>
+            
+            <!-- tele-->
+                <div class="form-group">
+                        <label for="exampleInputEmail1">prix de vente :</label>
+                        <input type="text" class="form-control" placeholder="prix de vente" formControlName="prix_vente">
+                </div>
+            <!-- mail-->
+                <div class="form-group">
+                        <label for="exampleInputEmail1">remise :</label>
+                        <input type="email" class="form-control" placeholder="remise" formControlName="remise">
+ 
+                      
+                </div>
+            
+        </div>
+
+        <div class="col-lg-5">
+               <!-- statut-->
+               
+               <div class="form-group">
+                <label for="exampleInputEmail1">Unité :</label>
+                <input type="text" class="form-control" placeholder="unité" formControlName="unité">
+
+              
+        </div>
+
+                <!-- adresse-->
+                <div class="form-group">
+                        <label for="exampleInputEmail1">Qte initiale :</label>
+                        <input type="number" class="form-control" placeholder="Qte initiale" formControlName="qte_init" >
+                </div>
+                <!-- ville--> 
+                <div class="form-group">
+                        <label for="exampleInputEmail1">Qte actuelle :</label>
+                        <input type="number" class="form-control" placeholder="Qte actuelle" formControlName="qte_act" >
+                </div>
+ 
+                <div class="row">
+                                <div *ngIf="addprod" class="col sm-6">
+                                                <button type="button" class="btn btn-success btn-lg btn-block" (click)="ajouter()">New</button>
+                                                
+                                </div>
+                                <div *ngIf="!addprod" class="col sm-6">
+                                                <button type="button" class="btn btn-warning btn-lg btn-block" (click)="editer()">Update</button>
+                                                
+                                </div>
+                </div>
+               
+        </div>
+    </div>
+</form>
+</div>
+<div class="container">
+                <div class="table-wrapper">
+                                <div class="row">
+                                        <div class="col col-lg-9">
+        
+                                        </div>
+                                        <div class="col col-lg-3">
+                                                        <a href="#" class="btn btn-success btn-lg btn-block" data-toggle="modal" (click)="visiblerform()"><i class="material-icons">&#xE147;</i> <span>Add New Produit</span></a>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                
+                                                <div class="mat-elevation-z8 col col-lg-12">
+                                                                <table mat-table [dataSource]="produits">
+                                                          
+                                                                  <!-- 1 Column -->
+                                                                  <ng-container matColumnDef="nom">
+                                                                        <th mat-header-cell *matHeaderCellDef> nom </th>
+                                                                        <td mat-cell *matCellDef="let element"> {{element.nom}}  </td>
+                                                                  </ng-container>
+                                                          
+                                                                  <!-- 2 Column -->
+                                                                  <ng-container matColumnDef="prix_base">
+                                                                        <th mat-header-cell *matHeaderCellDef> prix_base </th>
+                                                                        <td mat-cell *matCellDef="let element"> {{element.prix_base}} </td>
+                                                                  </ng-container>
+                                                          
+                                                                  <!-- 3 Column -->
+                                                                  <ng-container matColumnDef="prix_vente">
+                                                                        <th mat-header-cell *matHeaderCellDef> prix_vente </th>
+                                                                        <td mat-cell *matCellDef="let element"> {{element.prix_vente}}{{element.unite}}</td>
+                                                                  </ng-container>
+                                                          
+                                                                  <!-- 4 Column -->
+                                                                  <ng-container matColumnDef="qte_init">
+                                                                        <th mat-header-cell *matHeaderCellDef> qte initiale </th>
+                                                                        <td mat-cell *matCellDef="let element"> {{element.qte_init}} </td>
+                                                                  </ng-container>
+                                                                  <!-- 5 Permission -->
+                                                                  <ng-container matColumnDef="qte_act">
+                                                                        <th mat-header-cell *matHeaderCellDef> qte actuelle </th>
+                                                                        <td mat-cell *matCellDef="let element"> {{element.qte_act}} </td>
+                                                                  </ng-container>
+                                                                  <!-- 5 Permission -->
+                                                                  <ng-container matColumnDef="Action">
+                                                                        <th mat-header-cell *matHeaderCellDef> Action </th>
+                                                                        <td mat-cell *matCellDef="let row">      
+                                                                                 <a href="#" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit" (click)="onEdit(row)">&#xE254;</i></a>
+                                                                                <a href="#" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete" (click)="deleteprod(row)">&#xE872;</i></a>
+                                                                   </td>
+                                                                  </ng-container>
+        
+                                                                
+                                                          
+                                                                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                                                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                                                </table>
+                                                          
+                                                                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                                                          </div>
+                                                          
+        
+        
+                                        
+                        </div>
+                        
+                </div>
+        </div> 
+    </html>

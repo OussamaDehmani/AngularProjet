@@ -1,68 +1,23 @@
-<app-navbar></app-navbar>
-<div id="viewport">
-        <!-- Sidebar -->
-        <div id="sidebar">
-          <header>
-            <a href="#">My App</a>
-          </header>
-          <ul class="nav">
-            <li>
-              <a href="#">
-                <i class="zmdi zmdi-view-dashboard"></i> Dashboard
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="zmdi zmdi-link"></i> Shortcuts
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="zmdi zmdi-widgets"></i> Overview
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="zmdi zmdi-calendar"></i> Events
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="zmdi zmdi-info-outline"></i> About
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="zmdi zmdi-settings"></i> Services
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="zmdi zmdi-comment-more"></i> Contact
-              </a>
-            </li>
-          </ul>
-        </div>
-        <!-- Content -->
-        <div id="content">
-          <nav class="navbar navbar-default">
-            <div class="container-fluid">
-              <ul class="nav navbar-nav navbar-right">
-                <li>
-                  <a href="#"><i class="zmdi zmdi-notifications text-danger"></i>
-                  </a>
-                </li>
-                <li><a href="#">Test User</a></li>
-              </ul>
-            </div>
-          </nav>
-          <div class="container-fluid">
-            <h1>Simple Sidebar</h1>
-            <p>
-              Make sure to keep all page content within the 
-              <code>#content</code>.
-            </p>
-          </div>
-        </div>
-      </div>
-<app-adduser></app-adduser>
+<html>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ 
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!--<app-adduser></app-adduser>-->
+
+<app-sidebar *ngIf="open"></app-sidebar>
+
+<app-login ></app-login>
+<!--<app-list-produit></app-list-produit>-->
+ </html>

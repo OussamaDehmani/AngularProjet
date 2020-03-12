@@ -1,26 +1,98 @@
 {
   "users": [
     {
-      "id": 1,
-      "nom": "USER 1",
-      "prenom": "USER 1",
-      "email": "user1@gmail.com",
-      "mobile": "0000000000",
-      "ville": "city 1",
-      "statut": "Dep1",
-      "photo": "2020-01-16T23:00:00.000Z",
-      "adresse": "true"
+      "id": 10,
+      "nom": "Dehmani",
+      "prenom": "Oussama",
+      "email": "oussama.dehmani15@gmail.com",
+      "tel": "0682704097",
+      "ville": "SETTAT",
+      "permission": "",
+      "pass": "",
+      "adresse": "B.P 1229 SAMIR ,SETTAT"
     },
     {
+      "id": 11,
+      "nom": "Dehmani",
+      "prenom": "Oussama",
+      "email": "oussama.dehmani15@nnnn.com",
+      "tel": "0682704097",
+      "ville": "SETTAT",
+      "statut": "",
+      "permission": "",
+      "pass": "",
+      "adresse": "B.P 1229 SAMIR ,SETTAT"
+    },
+    {
+      "id": 12,
+      "nom": "Dehmani",
+      "prenom": "Oussama",
+      "email": "oussama.dehmani15@gmail.com",
+      "tel": "55555555555555",
+      "ville": "SETTAT",
+      "statut": "",
+      "permission": "",
+      "pass": "",
+      "adresse": "B.P 1229 SAMIR ,SETTAT"
+    },
+    {
+      "id": 14,
+      "nom": "Dehmani",
+      "prenom": "Oussama",
+      "email": "oussama.dehmani15@gmail.com",
+      "tel": "0682704097",
+      "ville": "SETTAT",
+      "statut": "",
+      "permission": true,
+      "pass": "",
+      "adresse": "B.P 1229 SAMIR ,SETTAT"
+    },
+    {
+      "id": 15,
+      "nom": "Dehmani",
+      "prenom": "Oussama",
+      "email": "oussama.degmani15@oooo.com",
+      "tel": "0682704097",
+      "ville": "SETTAT",
+      "statut": "",
+      "permission": "",
+      "pass": "1234",
+      "adresse": "B.P 1229 SAMIR ,SETTAT"
+    }
+  ],
+  "produits": [
+    {
+      "id": 4,
+      "nom": "12",
+      "prix_base": "12",
+      "prix_vente": "12",
+      "remise": "oussama.dehmani15@gmail.com",
+      "unité": "dd",
+      "image": null,
+      "qte_init": 232,
+      "qte_act": 122
+    }
+  ],
+  "fournisseurs": [
+    {
       "id": 2,
-      "nom": "",
-      "prenom": "",
-      "email": "",
-      "mobile": "",
-      "ville": "",
-      "statut": 0,
-      "photo": "",
-      "adresse": ""
+      "nom": "Oussama Dehmani",
+      "Adresse": "B.P 1229 SAMIR ,SETTAT",
+      "ville": "SETTAT",
+      "tel_mobile": "22222222",
+      "tel_fix": "1222",
+      "fax": "122",
+      "email_f": "oussama.dehmani15@gmail.com"
+    },
+    {
+      "id": 3,
+      "nom": "Oussama Dehmani",
+      "Adresse": "B.P 1229 SAMIR ,SETTAT",
+      "ville": "SETTAT",
+      "tel_mobile": "oussama.dehmani15@gmail.com",
+      "tel_fix": "22222",
+      "fax": "22222",
+      "email_f": "2222@gmail.com"
     }
   ]
 }

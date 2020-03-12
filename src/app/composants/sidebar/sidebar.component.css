@@ -17,9 +17,9 @@ body {
 }
 
 #content {
-  width: 100%;
+  width: 50%;
   position: relative;
-  margin-right: 0;
+
 }
 
 /* Sidebar Styles */
@@ -56,8 +56,8 @@ body {
   color: #fff;
 }
 
-#sidebar .nav{
-  
+.mynav{
+  height: 64px;
 }
 
 #sidebar .nav a{
